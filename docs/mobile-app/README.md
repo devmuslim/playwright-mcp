@@ -31,7 +31,7 @@
 | 00 | `00-executive-summary.md` | ملخص تنفيذي | 🟡 نسخة Phase 1 |
 | 01 | `01-repository-assessment.md` | المرحلة 1 | ✅ مكتمل |
 | 02 | `02-current-system-architecture.md` | المرحلة 1 | ✅ مكتمل |
-| 03 | `03-domain-model.md` | المرحلة 2 | ⏳ لاحقًا |
+| 03 | `03-domain-model.md` | المرحلة 2 | ✅ مكتمل |
 | 04 | `04-financial-calculations.md` | المرحلة 3 | ⏳ لاحقًا |
 | 05 | `05-product-requirements-document.md` | المرحلة 4 | ⏳ لاحقًا |
 | 06 | `06-feature-catalog.md` | المرحلة 4 | ⏳ لاحقًا |

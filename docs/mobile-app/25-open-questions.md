@@ -48,6 +48,14 @@
 | OQ-19 | Receipt OCR / auto-categorization — محلي، سحابي، أم مؤجّل؟ | 🟡 | Product | DEFERRED | خارج MVP على الأرجح |
 | OQ-20 | Feature flags / force-update / remote config — من أين تُدار؟ | 🟠 | Architect | OPEN | يحتاج BFF أو خدمة config |
 
+## أسئلة نموذج المجال (المرحلة 2)
+
+| ID | السؤال | الأولوية | المالك | الحالة | ملاحظات |
+|---|---|---|---|---|---|
+| OQ-21 | `repeat_freq` للفواتير يستخدم `half-year` (شرطة)، بينما AutoBudget يستخدم `half_year` (شرطة سفلية). كيف يوحّد الموبايل المعالجة؟ | 🟡 | BA | OPEN | مصدر: `Bill/StoreRequest.php:88` مقابل `Budget/StoreRequest.php:92` |
+| OQ-22 | كيانات فيها عمود `deleted_at` دون تفعيل `SoftDeletes` trait (Location, UserGroup, UserRole, GroupMembership, ObjectGroup) — ما سلوك الحذف الفعلي عبر API (soft أم hard)؟ | 🟠 | Architect | OPEN | يؤثر على tombstones/sync (المرحلة 10) |
+| OQ-23 | اسم عمود وضع الوسم بعد هجرة rename: `tag_mode` أم `tagMode`؟ | 🟡 | BA | OPEN | مصدر: `2025_07_10_065736_rename_tag_mode.php` |
+
 ---
 
 ## قواعد إدارة الأسئلة
