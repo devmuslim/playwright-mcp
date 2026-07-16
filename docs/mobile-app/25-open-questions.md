@@ -21,9 +21,9 @@
 
 | ID | السؤال | الأولوية | المالك | الحالة | ملاحظات |
 |---|---|---|---|---|---|
-| OQ-05 | هل Passport يدعم **PKCE** لعملاء public (موبايل)؟ | 🔴 | Security | OPEN | يحدّد تدفق OAuth للموبايل |
-| OQ-06 | ما مدد صلاحية access/refresh tokens الافتراضية، وهل refresh مفعّل؟ | 🔴 | Security | OPEN | يؤثر على تجربة إعادة الدخول |
-| OQ-07 | هل يمكن إنشاء OAuth client / PAT عبر API أم من الويب فقط؟ | 🟠 | Security | OPEN | يؤثر على onboarding |
+| OQ-05 | هل Passport يدعم **PKCE** لعملاء public (موبايل)؟ | 🔴 | Security | ✅ RESOLVED | **نعم.** `OAuthController@storeClient` يستدعي `createAuthorizationCodeGrantClient(confidential: false)` → عميل public → **Authorization Code + PKCE**. المصدر: `app/Http/Controllers/Profile/OAuthController.php:168-181`. القرار: يسجَّل الموبايل كعميل non-confidential. |
+| OQ-06 | ما مدد صلاحية access/refresh tokens الافتراضية، وهل refresh مفعّل؟ | 🔴 | Security | 🟡 PARTIAL | `Passport::tokensExpireIn(...)` **معلّق** (`app/Providers/AuthServiceProvider.php:54`) ⟶ تُطبَّق **قيم Passport الافتراضية** (توكنات طويلة العمر). refresh token يُصدر مع authorization_code grant. المدد الدقيقة **تحتاج تحقق runtime** حسب إصدار Passport المنشور. |
+| OQ-07 | هل يمكن إنشاء OAuth client / PAT عبر API أم من الويب فقط؟ | 🟠 | Security | ✅ RESOLVED | **من الويب فقط.** `/oauth/clients` و `/oauth/personal-access-tokens` تحت `routes/web.php:46-54` (session auth، profile controller)، وليست ضمن `/api/v1`. الأثر: onboarding يتطلب إنشاء client/PAT من واجهة الويب أولًا. |
 | OQ-08 | كيف يُتعامل مع 2FA أثناء تدفق API للموبايل؟ | 🟠 | Security | OPEN | — |
 | OQ-09 | سلوك الشهادات الموقّعة ذاتيًا (self-hosted) — هل نسمح بها ومتى؟ | 🟠 | Security | OPEN | Threat model |
 
